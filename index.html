@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#FF6B1A" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="콴다과외 튜터" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>콴다과외 튜터</title>
+    <style>
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        background: #f5f5f5;
+        z-index: 9999;
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+          "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+      }
+      #initial-loader .logo {
+        width: 140px;
+        height: 140px;
+        overflow: visible;
+      }
+      #initial-loader .ring {
+        fill: none;
+        stroke: #000;
+        stroke-width: 23;
+        stroke-linecap: round;
+        stroke-dasharray: 153.94;
+        stroke-dashoffset: 153.94;
+        transform-origin: 49px 49px;
+        transform: rotate(-90deg);
+        animation: loader-ring-loop 10s linear infinite;
+      }
+      #initial-loader .dot {
+        fill: #FF6B1A;
+        transform-origin: 74px 74px;
+        transform: scale(0);
+        animation: loader-dot-loop 10s linear infinite;
+      }
+      #initial-loader .label {
+        color: #444;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        opacity: 0;
+        animation: loader-fade-in 0.4s ease-out 1.3s forwards;
+      }
+      #initial-loader .dots {
+        display: inline-block;
+        width: 1.5em;
+        text-align: left;
+      }
+      #initial-loader .dots i {
+        font-style: normal;
+        opacity: 0.2;
+        animation: loader-blink 1.4s ease-in-out infinite;
+      }
+      #initial-loader .dots i:nth-child(2) { animation-delay: 0.2s; }
+      #initial-loader .dots i:nth-child(3) { animation-delay: 0.4s; }
+      @keyframes loader-ring-loop {
+        0%   { stroke-dashoffset: 153.94; opacity: 1; animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+        9%   { stroke-dashoffset: 0;      opacity: 1; animation-timing-function: linear; }
+        95%  { stroke-dashoffset: 0;      opacity: 1; animation-timing-function: ease-in; }
+        100% { stroke-dashoffset: 0;      opacity: 0; }
+      }
+      @keyframes loader-dot-loop {
+        0%,  8.5% { transform: scale(0); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+        13%       { transform: scale(1); animation-timing-function: linear; }
+        95%       { transform: scale(1); animation-timing-function: cubic-bezier(0.55, 0, 0.85, 0.3); }
+        100%      { transform: scale(0); }
+      }
+      @keyframes loader-fade-in {
+        to { opacity: 1; }
+      }
+      @keyframes loader-blink {
+        0%, 80%, 100% { opacity: 0.2; }
+        40%           { opacity: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div id="initial-loader">
+        <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle class="ring" cx="49" cy="49" r="24.5" />
+          <circle class="dot" cx="74" cy="74" r="13" />
+        </svg>
+        <div class="label">
+          Loading<span class="dots"><i>.</i><i>.</i><i>.</i></span>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
